@@ -1,0 +1,11 @@
+{
+  "name": "@wpv/core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "template core",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production ENV_MODE=prod webpack --config builds/prod.config.ts",
+    "build:test": "cross-env NODE_ENV=production ENV_MODE=test webpack --config builds/test.config.ts",
+    "dev": "cross-env NODE_ENV=development ENV_MODE=dev webpack serve --config builds/dev.config.ts"
+  }
+}

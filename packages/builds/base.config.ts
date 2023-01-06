@@ -1,46 +1,26 @@
-import path from 'path';
-
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import 'webpack-dev-server';
 
-import { isProdMode } from './util';
+import { pathResolve } from '@wpv/builds/util';
+import { isProdMode } from '@wpv/builds/env';
+
+import type { Configuration } from 'webpack';
 
 const stylesHandler = isProdMode() ? MiniCssExtractPlugin.loader : 'style-loader';
 
-// TODO
-const baseConfig: webpack.Configuration = {
+const baseConfig: Configuration = {
   mode: process.env.NODE_ENV as 'none' | 'development' | 'production',
-  entry: path.resolve(__dirname, '../src/main.ts'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   resolve: {
     alias: {
-      '@@': path.join(__dirname, '../src'),
+      '@@': pathResolve('../'),
     },
     modules: ['node_modules', '*'],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.vue'],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, '../src/index.html'),
-      prod: true,
-      hash: true,
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        html5: true,
-        minifyCSS: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-      },
-    }),
-  ],
   module: {
     rules: [
       {

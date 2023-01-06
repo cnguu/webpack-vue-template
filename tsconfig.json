@@ -14,15 +14,14 @@
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
-    "builds/**/*.ts",
-    "builds/**/*.d.ts",
-    "mocks/**/*.ts"
+    "wpv/**/*.ts",
+    "wpv/**/*.d.ts",
+    "wpv/**/*.tsx",
+    "wpv/**/*.vue",
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue"
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }

@@ -22,21 +22,32 @@
     "url": "https://github.com/cnguu"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config prod.config.ts",
-    "build:test": "cross-env NODE_ENV=production webpack --config test.config.ts",
-    "dev": "cross-env NODE_ENV=production webpack serve --config dev.config.ts",
+    "build": "pnpm -C wpv build",
+    "build:test": "pnpm -C wpv build:test",
+    "dev": "pnpm -C wpv dev",
     "preinstall": "npx only-allow pnpm",
     "lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "prepare": "husky install"
   },
+  "dependencies": {
+    "@wpv/builds": "workspace:*",
+    "@wpv/core": "workspace:*",
+    "@wpv/types": "workspace:*",
+    "@wpv/utils": "workspace:*"
+  },
   "devDependencies": {
+    "@pnpm/find-workspace-packages": "5.0.21",
+    "@pnpm/logger": "5.0.0",
+    "@pnpm/types": "8.10.0",
     "@types/node": "18.11.18",
     "@types/webpack": "5.28.0",
     "@typescript-eslint/eslint-plugin": "5.48.0",
     "@typescript-eslint/parser": "5.48.0",
+    "@yarnpkg/core": "4.0.0-rc.34",
     "autoprefixer": "10.4.13",
     "cross-env": "7.0.3",
     "css-loader": "6.7.3",
+    "dotenv": "16.0.3",
     "eslint": "8.31.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",
