@@ -6,6 +6,9 @@ import type { Configuration } from 'webpack';
 
 const devConfig: Configuration = merge(baseConfig, {
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     host: '0.0.0.0',
     compress: true,
     open: false,

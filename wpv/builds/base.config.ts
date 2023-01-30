@@ -7,22 +7,21 @@ import { getEnvConfig } from '@wpv/builds/env';
 
 import type { Configuration } from 'webpack';
 
-// TODO 增加WPV_BASE_PATH
-console.log(
-  getEnvConfig({
-    path: pathResolve(`./envs/.env.${process.env.ENV_MODE}`),
-  }),
-);
-process.exit();
+const envConfig = getEnvConfig({
+  path: pathResolve(`./envs/.env.${process.env.ENV_MODE}`),
+});
+
 const baseConfig: Configuration = merge(baseConfigDef, {
   entry: pathResolve('./src/main.ts'),
   output: {
     path: pathResolve('./builds/dist'),
+    publicPath: envConfig.WPV_BASE_PATH,
   },
   plugins: [
     new HtmlWebpackPlugin({
       ...getHtmlWebpackPluginOptions(),
       template: pathResolve('./index.html'),
+      publicPath: envConfig.WPV_BASE_PATH,
     }),
   ],
 });

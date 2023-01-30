@@ -25,3 +25,20 @@ export const getHtmlWebpackPluginOptions = () => {
     },
   };
 };
+
+/**
+ * @description 获取开发服务器代理
+ */
+export const getDevProxy = (list: [string, string][] = []): Record<any, any> => {
+  const ret: Record<any, any> = {};
+  for (const [prefix, target] of list) {
+    ret[prefix] = {
+      target,
+      changeOrigin: true,
+      ws: true,
+      rewrite: (path: string) => path.replace(new RegExp(`^${prefix}`), ''),
+      ...(/^https:\/\//.test(target) ? { secure: false } : {}),
+    };
+  }
+  return ret;
+};

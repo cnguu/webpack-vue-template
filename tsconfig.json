@@ -15,11 +15,9 @@
   },
   "include": [
     "wpv/**/*.ts",
-    "wpv/**/*.d.ts",
     "wpv/**/*.tsx",
     "wpv/**/*.vue",
     "packages/**/*.ts",
-    "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue"
   ],

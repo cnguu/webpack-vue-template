@@ -4,6 +4,8 @@ import { getFileInfoFromPath } from '@wpv/utils/file';
 
 import type { DotenvConfigOptions } from 'dotenv';
 
+import type { EnvConfig } from '@wpv/types/env';
+
 /**
  * @description 是否是开发环境
  */
@@ -37,7 +39,7 @@ const dotenvConfigOptions = (): DotenvConfigOptions => ({
 /**
  * @description 获取环境配置
  */
-export const getEnvConfig = (options: DotenvConfigOptions = {}) => {
+export const getEnvConfig = (options: DotenvConfigOptions = {}): EnvConfig => {
   const { path } = options;
 
   if (!path || Object.keys(envConfig).length > 0) return envConfig;
